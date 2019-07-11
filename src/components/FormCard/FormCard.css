@@ -1,0 +1,66 @@
+.FormCard {
+  background-color: #ffffff;
+  position: relative;
+  display: block;
+  width: 30%;
+  margin: 24px auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius:13px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+.left-corner {
+  position: absolute;
+  top: 0px;
+  left: 16px;
+}
+
+.right-corner {
+  position: absolute;
+  top: 0px;
+  right: 16px;
+}
+
+.w3-badge {
+  background-color:#000;
+  color:#fff;
+  display:inline-block;
+  padding-left:8px;
+  padding-right:8px;
+  text-align:center;
+  border-radius:50%;
+}
+
+.w3-badge-little{
+  background-color: #000;
+  color: #fff;
+  display: inline-block;
+  padding-left: 11px;
+  padding-right: 12px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.btnMaterial {
+	-moz-border-radius:13px;
+	-webkit-border-radius:13px;
+  border-radius: 13px;
+  border: 1px solid #000;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 17px;
+  padding: 5px 30px;
+  text-decoration: none;
+  color: #000;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+.btnMaterial:hover {
+  border:1px solid #18ab29;
+}
+.btnMaterial:active {
+	position:relative;
+	top:1px;
+}

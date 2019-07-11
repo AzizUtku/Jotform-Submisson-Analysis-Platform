@@ -1,0 +1,13 @@
+.Question {
+  background-color: #ffffff;
+  position: relative;
+  display: inline-block;
+  width: 30%;
+  margin: 24px 14px;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius:13px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  min-width: 320px;
+}
