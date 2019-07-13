@@ -1,76 +1,66 @@
-import React from "react";
+/* eslint-disable no-underscore-dangle */
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
 
-const LineChart = (props) => {
+const propTypes = {
+  labels: PropTypes.arrayOf(PropTypes.string).isRequired,
+  amounts: PropTypes.arrayOf(PropTypes.number).isRequired,
+  totalAnswers: PropTypes.number.isRequired,
+};
 
+const LineChart = (props) => {
   const { labels, amounts, totalAnswers } = props;
 
-  const backgroundColors = [
-    '#FFC300',
-    '#FF5733',
-    '#C70039',
-    '#900C3F',
-    '#581845',
-    '#DAF7A6',
-  ];
+  const backgroundColors = ['#FFC300', '#FF5733', '#C70039', '#900C3F', '#581845', '#DAF7A6'];
 
-  const hoverBackgroundColor = [
-    '#FFC300',
-    '#FF5733',
-    '#C70039',
-    '#900C3F',
-    '#581845',
-    '#DAF7A6',
-  ];
-
-  console.log("Line: ", );
-
-
-  const data = {
-    labels: labels,
-    datasets: labels.map((label,index) => {
-      let lineData = [];
+  const chartData = {
+    labels,
+    datasets: labels.map((label, index) => {
+      const lineData = [];
       lineData.push(amounts[index]);
-      return ({
-          data: lineData,
-          label: label,
-          borderColor: backgroundColors[index],
-          fill: false,
-        });
+      return {
+        data: lineData,
+        label,
+        borderColor: backgroundColors[index],
+        fill: false,
+      };
     }),
   };
 
   const options = {
     tooltips: {
       callbacks: {
-        label: function(tooltipItem, data) {
-          var dataset = data.datasets[tooltipItem.datasetIndex];
-          var meta = dataset._meta[Object.keys(dataset._meta)[0]];
-          var total = meta.total;
-          var currentValue = dataset.data[tooltipItem.index];
-          var percentage = parseFloat((currentValue/total*100).toFixed(1));
-          return currentValue + ' (' + percentage + '%)';
+        label(tooltipItem, data) {
+          const dataset = data.datasets[tooltipItem.datasetIndex];
+          const meta = dataset._meta[Object.keys(dataset._meta)[0]];
+          const { total } = meta;
+          const currentValue = dataset.data[tooltipItem.index];
+          const percentage = parseFloat(((currentValue / total) * 100).toFixed(1));
+          return `${currentValue} (${percentage}%)`;
         },
-        title: function(tooltipItem, data) {
+        title(tooltipItem, data) {
           return data.labels[tooltipItem[0].index];
-        }
-      }
+        },
+      },
     },
     scales: {
       barThickness: 1,
-      xAxes: [{
-        gridLines: {
-            drawOnChartArea: false
-        }
-      }],
+      xAxes: [
+        {
+          gridLines: {
+            drawOnChartArea: false,
+          },
+        },
+      ],
       yAxes: [
         {
           ticks: {
             min: 0,
-            max: totalAnswers,// Your absolute max value
+            max: totalAnswers, // Your absolute max value
             stepSize: totalAnswers / 5,
-            callback: function (value) {
-              return (value / totalAnswers * 100).toFixed(0) + '%'; // convert it to percentage
+            callback(value) {
+              return `${((value / totalAnswers) * 100).toFixed(0)}%`; // convert it to percentage
             },
           },
           scaleLabel: {
@@ -82,8 +72,8 @@ const LineChart = (props) => {
     },
   };
 
-  return <Line data={data} options={options}/>;;
+  return <Line data={chartData} options={options} />;
+};
 
-}
-
+LineChart.propTypes = propTypes;
 export default LineChart;

@@ -1,16 +1,23 @@
-import React from "react";
-import "./Card.css";
+/* eslint-disable react/prop-types */
+import React from 'react';
+import PropTypes from 'prop-types';
+import './Card.css';
 
-class Card extends React.Component {
-  render() {
-    return (
-      <div className="Card">
-        <h2>{this.props.title}</h2>
-        <p>{this.props.content}</p>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+const propTypes = {
+  title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+};
 
+const Card = (props) => {
+  const { title, content, children } = props;
+  return (
+    <div className="Card">
+      <h2>{title}</h2>
+      <p>{content}</p>
+      {children}
+    </div>
+  );
+};
+
+Card.propTypes = propTypes;
 export default Card;
