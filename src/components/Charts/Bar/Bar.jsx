@@ -1,9 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Bar } from 'react-chartjs-2';
+
+const propTypes = {
+  labels: PropTypes.arrayOf(PropTypes.string).isRequired,
+  amounts: PropTypes.arrayOf(PropTypes.number).isRequired,
+  totalAnswers: PropTypes.number.isRequired,
+};
 
 const BarChart = (props) => {
   const { labels, amounts, totalAnswers } = props;
-  const data = {
+  const chartData = {
     labels,
     datasets: [
       {
@@ -62,7 +69,8 @@ const BarChart = (props) => {
     },
   };
 
-  return <Bar data={data} options={options} />;
+  return <Bar data={chartData} options={options} />;
 };
 
+BarChart.propTypes = propTypes;
 export default BarChart;
