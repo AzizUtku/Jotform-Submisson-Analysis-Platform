@@ -1,3 +1,6 @@
+.words-parent {
+  margin: 10px 25px 10px 25px;
+}
 .word-cloud {
   margin: 0px 3px;
   cursor: default;
@@ -13,7 +16,7 @@
   background-color: black;
   color: #fff;
   text-align: center;
-  padding: 5px 0;
+  padding: 8px 0;
   border-radius: 6px;
   position: absolute;
   z-index: 1;

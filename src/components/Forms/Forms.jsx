@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import FormCard from './FormCard/FormCard';
+import { NavLink } from 'react-router-dom';
+import MenuElement from '../Main/Sidemenu/MenuSection/MenuElement/MenuElement';
 import { getForms } from '../../api/api';
 
 const propTypes = {
@@ -25,7 +26,27 @@ class Forms extends React.Component {
     let content = <h2>Loading...</h2>;
     const { forms } = this.state;
     if (forms) {
-      content = forms.map((form, index) => <FormCard key={form.id} no={index + 1} {...form} />);
+      content = forms.map((form, index) => (
+        <MenuElement value={form.title} key={form.id} no={index + 1} {...form}>
+          <NavLink
+            isActive={
+              (match, location) => {
+                if (!location) return false;
+                const { pathname, search } = location;
+                return pathname === '/questions' && search === (`?formId=${form.id}`);
+              }
+            }
+            activeClassName="active"
+            to={{
+              pathname: '/questions',
+              search: `?formId=${form.id}`,
+            }}
+          >
+            <i className="fa fa-file" aria-hidden="true" />
+            {form.title}
+          </NavLink>
+        </MenuElement>
+      ));
     }
     return content;
   }

@@ -10,13 +10,13 @@ const propTypes = {
 const ChartButtons = (props) => {
   const { clicked } = props;
   return (
-    <React.Fragment>
+    <div>
       <ChartButton clicked={clicked} chartType={chartTypes.PIE} title="Pie" />
       <ChartButton clicked={clicked} chartType={chartTypes.DOUGHNUT} title="Doughnut" />
       <ChartButton clicked={clicked} chartType={chartTypes.BAR} title="Bar" />
       <ChartButton clicked={clicked} chartType={chartTypes.HORIZONTAL_BAR} title="HorizontalBar" />
       <ChartButton clicked={clicked} chartType={chartTypes.POLAR} title="Polar" />
-    </React.Fragment>
+    </div>
   );
 };
 

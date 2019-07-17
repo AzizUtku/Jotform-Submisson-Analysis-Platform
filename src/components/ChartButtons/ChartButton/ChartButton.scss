@@ -1,0 +1,26 @@
+@import '../../../sass/variables';
+
+.btnChart {
+  margin: 1% 1%;
+  font-size: 0.9em;
+  border-radius: 10px;
+  padding: 10px 20px 10px 20px;
+  background: #3b5bc0;
+  font-weight: 600;
+  width: 18%;
+  border: none;
+  /* border-radius: 2px; */
+  color: #fafafa;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+
+  .fa {
+    margin-right: 12px;
+    font-size: 1em;
+    font-weight: 200;
+  }
+
+  &:hover {
+    background: $bg_button_hover;
+  }
+}

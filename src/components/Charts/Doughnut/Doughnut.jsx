@@ -1,6 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Doughnut } from 'react-chartjs-2';
+import { chartBackgroundColors, chartHoverBackgroundColors } from '../../../constants/constants';
 
 const propTypes = {
   labels: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -10,15 +12,15 @@ const propTypes = {
 
 const DoughnutChart = (props) => {
   const { labels, amounts, totalAnswers } = props;
-  const data = {
+  const chartData = {
     labels,
     datasets: [
       {
         labels,
         fill: false,
         data: amounts,
-        backgroundColor: ['#FFC300', '#FF5733', '#C70039', '#900C3F', '#581845', '#DAF7A6'],
-        hoverBackgroundColor: ['#FFC300', '#FF5733', '#C70039', '#900C3F', '#581845', '#DAF7A6'],
+        backgroundColor: chartBackgroundColors,
+        hoverBackgroundColor: chartHoverBackgroundColors,
       },
     ],
   };
@@ -67,7 +69,7 @@ const DoughnutChart = (props) => {
     },
   };
 
-  return <Doughnut data={data} options={options} />;
+  return <Doughnut data={chartData} options={options} />;
 };
 
 DoughnutChart.propTypes = propTypes;

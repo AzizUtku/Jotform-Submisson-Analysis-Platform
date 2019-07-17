@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Pie } from 'react-chartjs-2';
+import { chartBackgroundColors, chartHoverBackgroundColors } from '../../../constants/constants';
 
 const propTypes = {
   labels: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -18,13 +19,20 @@ const PieChart = (props) => {
         labels,
         fill: false,
         data: amounts,
-        backgroundColor: ['#FFC300', '#FF5733', '#C70039', '#900C3F', '#581845', '#DAF7A6'],
-        hoverBackgroundColor: ['#FFC300', '#FF5733', '#C70039', '#900C3F', '#581845', '#DAF7A6'],
+        backgroundColor: chartBackgroundColors,
+        hoverBackgroundColor: chartHoverBackgroundColors,
       },
     ],
   };
 
   const options = {
+    legend: {
+      position: 'top',
+      align: 'start',
+      labels: {
+        fontFamily: 'Poppins',
+      },
+    },
     tooltips: {
       callbacks: {
         label(tooltipItem, data) {
@@ -47,6 +55,9 @@ const PieChart = (props) => {
           gridLines: {
             drawOnChartArea: false,
           },
+          ticks: {
+            fontFamily: 'Poppins',
+          },
         },
       ],
       yAxes: [
@@ -58,6 +69,7 @@ const PieChart = (props) => {
             callback(value) {
               return `${((value / totalAnswers) * 100).toFixed(0)}%`; // convert it to percentage
             },
+            fontFamily: 'Poppins',
           },
           scaleLabel: {
             display: true,

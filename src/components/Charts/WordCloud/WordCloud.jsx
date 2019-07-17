@@ -88,7 +88,7 @@ class WordCloud extends React.Component {
         );
       });
     }
-    return <div>{content}</div>;
+    return <div className="words-parent">{content}</div>;
   }
 }
 

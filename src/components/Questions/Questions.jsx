@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-restricted-syntax */
@@ -11,18 +12,30 @@ import Question from './Question/Question';
 
 const propTypes = {
   location: PropTypes.object.isRequired,
-  apiKey: PropTypes.string.isRequired,
 };
 
 class Questions extends React.Component {
   state = {
     questions: [],
     detailsLoaded: false,
+    noId: true,
+    id: '',
   };
 
   componentDidMount() {
-    const { location, apiKey } = this.props;
-    console.log('MOUNTED', this.props);
+    this.loadQuestions();
+  }
+
+  componentDidUpdate() {
+    this.loadQuestions();
+  }
+
+
+  loadQuestions = () => {
+    // eslint-disable-next-line no-undef
+    const apiKey = window.JF.getAPIKey();
+    const { location } = this.props;
+    const { id } = this.state;
     const query = new URLSearchParams(location.search);
     let formId;
     for (const param of query.entries()) {
@@ -30,7 +43,9 @@ class Questions extends React.Component {
         formId = param[1];
       }
     }
-
+    if (formId === id) {
+      return;
+    }
     if (formId) {
       getQuestions(apiKey, formId, (response) => {
         const questions = response.data.content;
@@ -49,16 +64,14 @@ class Questions extends React.Component {
               }
             }
           }
-
-          // eslint-disable-next-line react/no-unused-state
-          this.setState({ questions, detailsLoaded: true });
+          this.setState({ questions, detailsLoaded: true, id: formId });
         });
       });
     }
   }
 
   render() {
-    const { detailsLoaded, questions } = this.state;
+    const { detailsLoaded, questions, noId } = this.state;
     if (detailsLoaded) {
       console.log('Questions: ', questions);
       const content = [];
@@ -74,7 +87,7 @@ class Questions extends React.Component {
               <Question
                 type={question.type}
                 title={question.text}
-                no={`Question ${i}`}
+                no={i}
                 key={question.name}
                 question={question}
               />
@@ -83,6 +96,9 @@ class Questions extends React.Component {
         }
       }
       return content;
+    }
+    if (noId) {
+      return <h2>Please select one of your forms...</h2>;
     }
     return <h2>Loading...</h2>;
   }

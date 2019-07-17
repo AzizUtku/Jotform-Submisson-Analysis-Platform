@@ -2,13 +2,12 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import './App.css';
+import './App.scss';
 import {
   Route, Switch, withRouter, Redirect,
 } from 'react-router-dom';
 import Card from '../components/Card/Card';
-import Forms from '../components/Forms/Forms';
-import Questions from '../components/Questions/Questions';
+import Main from '../components/Main/Main';
 
 class App extends React.Component {
   constructor(props) {
@@ -67,7 +66,7 @@ class App extends React.Component {
             <Route
               path="/forms"
               exact
-              render={() => <Forms apiKey={apiKey} isAuthenticated={isAuthenticated} />}
+              render={() => <Main apiKey={apiKey} isAuthenticated={isAuthenticated} />}
             />
           ) : null}
 
@@ -75,7 +74,7 @@ class App extends React.Component {
             <Route
               path="/questions"
               exact
-              render={() => <Questions apiKey={apiKey} isAuthenticated={isAuthenticated} />}
+              render={() => <Main apiKey={apiKey} isAuthenticated={isAuthenticated} />}
             />
           ) : null}
 

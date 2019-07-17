@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './ChartButton.css';
+import './ChartButton.scss';
 
 const propTypes = {
   clicked: PropTypes.func.isRequired,

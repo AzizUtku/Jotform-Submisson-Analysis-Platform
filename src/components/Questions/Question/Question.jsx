@@ -5,7 +5,6 @@ import Radio from '../Controls/Radio/Radio';
 import Checkbox from '../Controls/Checkbox/Checkbox';
 import FullName from '../Controls/FullName/FullName';
 import Textarea from '../Controls/Textarea/Textarea';
-import './Question.css';
 
 const propTypes = {
   type: PropTypes.string.isRequired,
@@ -25,6 +24,8 @@ class Question extends React.Component {
     const { type } = this.props;
 
     let chart = <YesNo {...this.props} />;
+
+    console.log("SSSSSSDDSKDSKDSKDS:", this.props);
 
     if (Object.prototype.hasOwnProperty.call(this.controls, type)) {
       chart = this.controls[type];

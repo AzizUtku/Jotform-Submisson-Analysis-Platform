@@ -1,0 +1,67 @@
+@import "../../../sass/variables";
+
+.content {
+  float: left;
+  padding: 40px;
+  width: 60%;
+  .header {
+    margin-bottom: 100px;
+    .left {
+      float: left;
+
+      .navigation {
+        font-size: 0.9em;
+        color: $bg_blue;
+    
+        .fa {
+          margin: 0px 6px 0px 6px;
+          font-size: 0.9em;
+          color: $bg_blue;
+        }
+      }
+    
+      .title {
+        margin-top: 10px;
+        font-size: 1.6em;
+        font-weight: 800;
+        letter-spacing: 0px;
+        color: $bg_text_color_blue;
+    
+        .fa {
+          margin-left: 10px;
+          font-size: 1em;
+          color: rgba(175,177,184, 1);
+        }
+      }
+
+    }
+
+    .right {
+      float: right;
+
+      button {
+        padding: 12px 20px 12px 20px;
+        background: $bg_button;
+        font-size: 1em;
+        font-weight: 600;
+        border: none;
+        border-radius: 2px;
+        color: #fafafa;
+        cursor: pointer;
+        transition: all 0.15s ease-in-out;
+
+        .fa {
+          margin-right: 12px;
+          font-size: 1em;
+          font-weight: 200;
+        }
+
+        &:hover {
+          background: $bg_button_hover;
+        }
+      }
+     
+    }
+  }
+
+}

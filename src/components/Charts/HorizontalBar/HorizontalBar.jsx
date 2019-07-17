@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { HorizontalBar } from 'react-chartjs-2';
+import { chartBackgroundColors, chartHoverBackgroundColors } from '../../../constants/constants';
 
 const propTypes = {
   labels: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -16,8 +17,8 @@ const HorizontalBarChart = (props) => {
       {
         label: labels,
         data: amounts,
-        backgroundColor: ['#FFC300', '#FF5733', '#C70039', '#900C3F', '#581845', '#DAF7A6'],
-        hoverBackgroundColor: ['#FFC300', '#FF5733', '#C70039', '#900C3F', '#581845', '#DAF7A6'],
+        backgroundColor: chartBackgroundColors,
+        hoverBackgroundColor: chartHoverBackgroundColors,
       },
     ],
   };

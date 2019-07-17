@@ -3,13 +3,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Charts from '../../../Charts/Charts';
-import ChartButtons from '../../../ChartButtons/ChartButtons';
 import { chartTypes } from '../../../../constants/constants';
+import QuestionCard from '../../Question/QuestionCard/QuestionCard';
 
 const propTypes = {
   question: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  no: PropTypes.string.isRequired,
+  no: PropTypes.number.isRequired,
 };
 
 class Checkbox extends React.Component {
@@ -66,21 +66,20 @@ class Checkbox extends React.Component {
     const amounts = labels.map(label => amountOfAnswers[label]);
 
     return (
-      <div className="Question">
-        <h3>{title}</h3>
-        <p className="left-corner">
-          <span className="w3-badge-little">{no}</span>
-        </p>
+      <QuestionCard
+        title={title}
+        no={no}
+        chartTypeHandler={this.chartTypeHandler}
+        totalAnswers={totalAnswers}
+      >
         <Charts
           chartType={chartType}
           labels={labels}
           amounts={amounts}
           totalAnswers={totalAnswers}
         />
-        <p>Total submission: {totalAnswers}</p>
         {children}
-        <ChartButtons clicked={this.chartTypeHandler} />
-      </div>
+      </QuestionCard>
     );
   }
 }

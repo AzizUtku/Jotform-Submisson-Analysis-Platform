@@ -2,16 +2,16 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getGenders } from '../../../../api/api';
+import QuestionCard from '../../Question/QuestionCard/QuestionCard';
 import Charts from '../../../Charts/Charts';
-import ChartButtons from '../../../ChartButtons/ChartButtons';
+import { getGenders } from '../../../../api/api';
 import { chartTypes } from '../../../../constants/constants';
 import './FullName.css';
 
 const propTypes = {
   question: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  no: PropTypes.string.isRequired,
+  no: PropTypes.number.isRequired,
 };
 
 class FullName extends React.Component {
@@ -72,10 +72,11 @@ class FullName extends React.Component {
       }
       return (
         <div className="Question">
-          <h3>{title}</h3>
-          <p className="left-corner">
-            <span className="w3-badge-little">{no}</span>
-          </p>
+          <div className="question-title">
+            <i className="fa fa-signal" aria-hidden="true" />
+            {title}
+            <i className="fa fa-caret-down" aria-hidden="true" />
+          </div>
           <div className="loader" />
         </div>
       );
@@ -85,21 +86,19 @@ class FullName extends React.Component {
     const amounts = labels.map(label => amountOfAnswers[label]);
 
     return (
-      <div className="Question">
-        <h3>{title}</h3>
-        <p className="left-corner">
-          <span className="w3-badge-little">{no}</span>
-        </p>
+      <QuestionCard
+        title={title}
+        no={no}
+        chartTypeHandler={this.chartTypeHandler}
+        totalAnswers={totalAnswers}
+      >
         <Charts
           chartType={chartType}
           labels={labels}
           amounts={amounts}
           totalAnswers={totalAnswers}
         />
-        <p>Total submission: {totalAnswers}</p>
-        {children}
-        <ChartButtons clicked={this.chartTypeHandler} />
-      </div>
+      </QuestionCard>
     );
   }
 }

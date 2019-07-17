@@ -1,0 +1,84 @@
+@import "../../../sass/variables";
+
+.aside {
+  float: right;
+  width: 25%;
+  padding: 40px;
+  background: $bg_side_menu;
+  border-left: 1px solid $bg_divider;
+
+  .close {
+    color: #aaa;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    font-size: 2.3em;
+    font-weight: 10;
+  }
+
+  .close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .top {
+
+    margin-bottom: 25px;
+
+    .id {
+      display: block;
+      font-size: 0.9em;
+      color: #b5b3b3;
+    }
+  
+    .title {
+      margin-top: 10px;
+      font-size: 1.6em;
+      font-weight: 800;
+      letter-spacing: 0px;
+      color: $bg_text_color_blue;
+    }
+  }
+
+  .section {
+    margin-top: 20px;
+
+    .title {
+      font-size: 1.1em;
+      color: $bg_text_color_blue;
+      letter-spacing: 0px;
+
+      .fa {
+        margin-right: 12px;
+        color: $bg_blue;
+      }
+    }
+
+    .card-content {
+
+      
+      .section-card {
+        display: inline-block;
+        border: 1px solid $bg_divider;
+        padding: 22px 30px 22px 22px;
+        margin: 20px 5% 0 0;
+        width: 45%;
+
+        .number {
+          font-size: 1.3em;
+          margin-bottom: 8px;
+          font-weight: bold;
+          color: $bg_text_color_blue;
+        }
+
+        .desc {
+          font-size: 1em;
+          color: #b5b3b3;
+          letter-spacing: 0px;
+          font-weight: 500;
+        }
+      }
+    } 
+  }
+}

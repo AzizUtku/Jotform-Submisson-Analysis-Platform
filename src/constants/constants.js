@@ -46,6 +46,24 @@ export const controlTypes = {
   CONTROL_SCALE: 'control_scale',
 };
 
+export const chartBackgroundColors = [
+  '#4459c2',
+  '#94bbf9',
+  '#F47926',
+  '#A760B4',
+  '#8F5CBA',
+  '#F0EDFF',
+];
+
+export const chartHoverBackgroundColors = [
+  '#4459c2',
+  '#705ABF',
+  '#8F5CBA',
+  '#A760B4',
+  '#9190C5',
+  '#F0EDFF',
+];
+
 export const materialColors = [
   '#004d40',
   '#006064',
