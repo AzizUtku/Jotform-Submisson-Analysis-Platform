@@ -76,11 +76,14 @@ class WordCloud extends React.Component {
           + ((maxSize - minSize) * (element.freq - minFreq)) / (maxFreq - minFreq)}px`;
         const fontWeight = element.freq === maxFreq ? '400' : '300';
         const color = materialColors[Math.floor(Math.random() * materialColors.length)];
+        // const background = color.slice(0, 1).concat('4D').concat(color.slice(1));
         return (
           <div
             key={element.word + element.freq}
             className="word-cloud"
-            style={{ fontSize, color, fontWeight }}
+            style={{
+              fontSize, color, fontWeight,
+            }}
           >
             {element.word}
             <span className="tooltiptext">{`${element.word} (${element.freq})`}</span>

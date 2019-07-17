@@ -1,0 +1,4 @@
+export const SET_APIKEY = 'SET_APIKEY';
+export const SET_IS_AUTHENTICATED = 'SET_IS_AUTHENTICATED';
+export const LOAD_FORMS = 'LOAD_FORMS';
+export const SELECT_FORM = 'SELECT_FORM';

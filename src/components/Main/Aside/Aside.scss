@@ -27,7 +27,7 @@
     margin-bottom: 25px;
 
     .id {
-      display: block;
+      display: inline-block;
       font-size: 0.9em;
       color: #b5b3b3;
     }
@@ -38,6 +38,15 @@
       font-weight: 800;
       letter-spacing: 0px;
       color: $bg_text_color_blue;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .fa {
+      margin-left: 8px;
+      color: $bg_blue;
     }
   }
 

@@ -3,11 +3,17 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
+};
+
+const defaultProps = {
+  value: '-',
 };
 
 const Card = (props) => {
-  const { name, value } = props;
+  const { name } = props;
+  let { value } = props;
+  value = value || '-';
   return (
     <div className="section-card">
       <div className="number">{value}</div>
@@ -17,4 +23,5 @@ const Card = (props) => {
 };
 
 Card.propTypes = propTypes;
+Card.defaultProps = defaultProps;
 export default Card;

@@ -1,52 +1,47 @@
+/* eslint-disable max-len */
 /* eslint-disable no-alert */
 /* eslint-disable no-undef */
-/* eslint-disable react/prop-types */
 import React from 'react';
-import './App.scss';
+import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import {
   Route, Switch, withRouter, Redirect,
 } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actionCreators from '../store/actions';
 import Card from '../components/Card/Card';
 import Main from '../components/Main/Main';
+import './App.scss';
+
+const propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+  onSetApiKey: PropTypes.func.isRequired,
+  onSetIsAuthenticated: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+};
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isAuthenticated: false,
-      apiKey: null,
-    };
-  }
-
   authenticateHandler = () => {
-    const { history } = this.props;
-
+    const { history, onSetApiKey, onSetIsAuthenticated } = this.props;
     window.JF.login(
       () => {
         const apiKey = window.JF.getAPIKey();
 
-        this.setState({
-          isAuthenticated: true,
-          apiKey,
-        });
+        onSetApiKey(apiKey);
+        onSetIsAuthenticated(true);
 
-        history.push('/forms', {
-          isAuthenticated: true,
-          apiKey,
-        });
+        history.push('/forms');
       },
       () => {
-        this.setState({
-          isAuthenticated: false,
-          apiKey: null,
-        });
+        onSetApiKey(null);
+        onSetIsAuthenticated(false);
         alert('Could not authorize user');
       }
     );
   };
 
   render() {
-    const { apiKey, isAuthenticated } = this.state;
+    const { isAuthenticated } = this.props;
     return (
       <div className="App">
         <Switch>
@@ -66,7 +61,7 @@ class App extends React.Component {
             <Route
               path="/forms"
               exact
-              render={() => <Main apiKey={apiKey} isAuthenticated={isAuthenticated} />}
+              render={() => <Main />}
             />
           ) : null}
 
@@ -74,7 +69,7 @@ class App extends React.Component {
             <Route
               path="/questions"
               exact
-              render={() => <Main apiKey={apiKey} isAuthenticated={isAuthenticated} />}
+              render={() => <Main />}
             />
           ) : null}
 
@@ -85,4 +80,15 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App);
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  apiKey: state.auth.apiKey,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onSetApiKey: apiKey => dispatch(actionCreators.setApiKey(apiKey)),
+  onSetIsAuthenticated: isAuthenticated => dispatch(actionCreators.setIsAuthenticated(isAuthenticated)),
+});
+
+App.propTypes = propTypes;
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));

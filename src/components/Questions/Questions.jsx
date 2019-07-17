@@ -1,17 +1,15 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/forbid-prop-types */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable guard-for-in */
 import React from 'react';
-import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
 import { allowedControls } from '../../constants/constants';
 import { getQuestions, getSubmissions } from '../../api/api';
 import Question from './Question/Question';
 
 const propTypes = {
-  location: PropTypes.object.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
 };
 
 class Questions extends React.Component {
