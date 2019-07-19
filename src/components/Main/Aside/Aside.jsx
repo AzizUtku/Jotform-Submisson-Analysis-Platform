@@ -17,7 +17,6 @@ const Aside = (props) => {
   return (
     <section className="aside">
       <aside>
-        <span className="close">&times;</span>
         <AsideHeader title="Form Details" id={selectedForm.id} url={selectedForm.url} />
         <AsideSection title="Form Statistics">
           <Cards />

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import * as actionTypes from './actionTypes';
 import * as api from '../../api/api';
 
@@ -16,10 +17,9 @@ export const loadForms = forms => ({
 });
 
 export const getForms = () => (
-  (dispatch, getState) => {
-    const { apiKey } = getState().auth;
-    api.getForms(apiKey, (response) => {
-      dispatch(loadForms(response.data.content));
+  (dispatch) => {
+    window.JF.getForms((response) => {
+      dispatch(loadForms(response));
     });
   }
 );

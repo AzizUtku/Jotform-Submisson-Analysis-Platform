@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable guard-for-in */
@@ -5,7 +6,6 @@ import React from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
 import { allowedControls } from '../../constants/constants';
-import { getQuestions, getSubmissions } from '../../api/api';
 import Question from './Question/Question';
 
 const propTypes = {
@@ -30,8 +30,6 @@ class Questions extends React.Component {
 
 
   loadQuestions = () => {
-    // eslint-disable-next-line no-undef
-    const apiKey = window.JF.getAPIKey();
     const { location } = this.props;
     const { id } = this.state;
     const query = new URLSearchParams(location.search);
@@ -45,14 +43,13 @@ class Questions extends React.Component {
       return;
     }
     if (formId) {
-      getQuestions(apiKey, formId, (response) => {
-        const questions = response.data.content;
-        for (const key in response.data.content) {
+      window.JF.getFormQuestions(formId, (response) => {
+        const questions = response;
+        for (const key in response) {
           questions[key].answers = [];
         }
-
-        getSubmissions(apiKey, formId, (res) => {
-          const submissions = res.data.content;
+        window.JF.getFormSubmissions(formId, (res) => {
+          const submissions = res;
           for (let i = 0; i < submissions.length; i += 1) {
             const submission = submissions[i];
             const { answers } = submission;
@@ -77,8 +74,6 @@ class Questions extends React.Component {
         const question = questions[questionKey];
         if (question.type in allowedControls && allowedControls[question.type]) {
           i += 1;
-          console.log('');
-          console.log('Question ', i, ' : ', question);
           if (allowedControls[question.type]) {
             content.push(
               <Question

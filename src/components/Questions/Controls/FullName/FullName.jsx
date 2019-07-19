@@ -52,7 +52,6 @@ class FullName extends React.Component {
             amountOfAnswers.empty += 1;
           } else {
             getGenders(element.first, (response) => {
-              console.log(response);
               if (!response.data.gender) {
                 amountOfAnswers.unknown += 1;
               } else {

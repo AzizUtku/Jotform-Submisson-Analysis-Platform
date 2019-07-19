@@ -14,7 +14,7 @@ export const allowedControls = {
   control_yesno: true,
   control_radio: true,
   control_checkbox: true,
-  control_fullname: true,
+  control_fullname: false,
   control_textarea: true,
   control_textbox: true,
   control_email: true,
