@@ -32,7 +32,7 @@ class FullName extends React.Component {
   render() {
     const { chartType, loaded } = this.state;
     const {
-      title, no, children, question,
+      title, no, question,
     } = this.props;
     const labels = ['male', 'female', 'unknown', 'empty'];
     if (!loaded) {

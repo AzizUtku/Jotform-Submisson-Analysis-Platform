@@ -57,7 +57,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onGetForms: () => { dispatch(actionCreators.getForms()); },
-  onSelectForm: (form) => { dispatch(actionCreators.selectForm(form)); },
+  onSelectForm: (form) => {
+    dispatch(actionCreators.selectForm(form));
+  },
 });
 
 Forms.propTypes = propTypes;

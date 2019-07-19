@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react';
@@ -14,10 +15,12 @@ const propTypes = {
 class Content extends React.Component {
   render() {
     const { selectedForm } = this.props;
+    const warning = selectedForm.id ? <h2>There are no submissions</h2> : <h2>Please select one of your forms...</h2>;
+    const content = (!selectedForm.id || selectedForm.count === '0') ? warning : <Questions />;
     return (
       <section className="content">
         <ContentHeader title="Summary" path={selectedForm.title} />
-        <Questions />
+        { content }
       </section>
     );
   }

@@ -60,9 +60,8 @@ class WordCloud extends React.Component {
       minSize, maxSize, text, maxAmount,
     } = this.props;
 
-    let wordArr = this.parseString(text);
+    let wordArr = this.parseString(text.trim());
 
-    console.log('AERRRRR', wordArr);
     let content;
     if (wordArr.length > 0) {
       const minFreq = wordArr[wordArr.length - 1].freq;
@@ -76,7 +75,6 @@ class WordCloud extends React.Component {
           + ((maxSize - minSize) * (element.freq - minFreq)) / (maxFreq - minFreq)}px`;
         const fontWeight = element.freq === maxFreq ? '400' : '300';
         const color = materialColors[Math.floor(Math.random() * materialColors.length)];
-        // const background = color.slice(0, 1).concat('4D').concat(color.slice(1));
         return (
           <div
             key={element.word + element.freq}

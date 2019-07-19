@@ -1,3 +1,6 @@
+/* eslint-disable func-names */
+/* eslint-disable prefer-rest-params */
+/* eslint-disable no-extend-native */
 import axios from 'axios';
 
 const methods = {

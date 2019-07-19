@@ -2,16 +2,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Line } from 'react-chartjs-2';
-import { chartBackgroundColors } from '../../../constants/constants';
 
 const propTypes = {
   labels: PropTypes.arrayOf(PropTypes.string).isRequired,
   amounts: PropTypes.arrayOf(PropTypes.number).isRequired,
   totalAnswers: PropTypes.number.isRequired,
+  chartBackgroundColors: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 const LineChart = (props) => {
-  const { labels, amounts, totalAnswers } = props;
+  const {
+    labels, amounts, totalAnswers, chartBackgroundColors,
+  } = props;
 
   const backgroundColors = chartBackgroundColors;
 

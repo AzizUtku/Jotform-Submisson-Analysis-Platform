@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { HorizontalBar } from 'react-chartjs-2';
-import { chartBackgroundColors, chartHoverBackgroundColors } from '../../../constants/constants';
 
 const propTypes = {
   labels: PropTypes.arrayOf(PropTypes.string).isRequired,
   amounts: PropTypes.arrayOf(PropTypes.number).isRequired,
   totalAnswers: PropTypes.number.isRequired,
+  chartBackgroundColors: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 const HorizontalBarChart = (props) => {
-  const { labels, amounts, totalAnswers } = props;
+  const {
+    labels, amounts, totalAnswers, chartBackgroundColors,
+  } = props;
   const chartData = {
     labels,
     datasets: [
@@ -18,7 +20,7 @@ const HorizontalBarChart = (props) => {
         label: labels,
         data: amounts,
         backgroundColor: chartBackgroundColors,
-        hoverBackgroundColor: chartHoverBackgroundColors,
+        hoverBackgroundColor: chartBackgroundColors,
       },
     ],
   };

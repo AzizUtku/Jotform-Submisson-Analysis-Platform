@@ -27,7 +27,7 @@ class Radio extends React.Component {
   render() {
     const { chartType } = this.state;
     const {
-      title, no, children, question,
+      title, no, question,
     } = this.props;
 
     let labels = [];

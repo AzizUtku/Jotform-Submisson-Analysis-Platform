@@ -2,12 +2,16 @@
   margin: 10px 25px 10px 25px;
 }
 .word-cloud {
-  margin: 0px 3px;
+  margin: 1px 3px;
   cursor: default;
   text-anchor: middle;
   display: inline-block;
   font-family: 'Poppins', sans-serif;
   position: relative;
+  background: rgba(59, 91, 192, 0.15);
+  border-radius: 10px;
+  padding: 6px 6px 6px 6px;
+  transition: all 0.15 ease-in-out;
 }
 
 .word-cloud .tooltiptext {
@@ -30,6 +34,10 @@
   visibility: visible;
   animation: 0.3s fadeIn;
   animation-fill-mode: forwards;
+}
+
+.word-cloud:hover {
+  background: rgba(59, 91, 192, 0.35);
 }
 
 @keyframes fadeIn {

@@ -4,6 +4,7 @@
   float: left;
   padding: 40px;
   width: 60%;
+  overflow: auto;
   .header {
     margin-bottom: 100px;
     .left {
@@ -51,6 +52,8 @@
         transition: all 0.15s ease-in-out;
 
         .fa {
+          color: #ffffff;
+          margin-left: 0px;
           margin-right: 12px;
           font-size: 1em;
           font-weight: 200;
@@ -60,7 +63,57 @@
           background: $bg_button_hover;
         }
       }
+
+      .fa-cog {
+        color: $bg_blue;
+        font-size: 2.3em;
+        margin-left: 15px;
+        position: relative;
+        top: 6px;
+        cursor: pointer;
+
+        &:hover {
+          color: $bg_button_hover;
+        }
+
+      }
+      
      
+    }
+  }
+
+  .modal {
+
+    .close {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 2.3em;
+      font-weight: 10;
+    }
+
+    .close:hover, .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .dot {
+      height: 4em;
+      width: 4em;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 7px 0.2em 7px 0.2em;
+      transition: all 0.2s ease;
+      &:hover {
+        height: 3.7em;
+        width: 3.7em;
+      }
+    }
+
+    h2 {
+      color: $bg_text_color;
     }
   }
 

@@ -38,7 +38,7 @@ class QuestionCard extends React.Component {
           {title}
           <i className="fa fa-caret-down" aria-hidden="true" />
         </div>
-        <div className="info">Total submission: {totalAnswers}</div>
+        <div className="info">Total submissions: {totalAnswers}</div>
         {!hidden && (
           <React.Fragment>
             {children}

@@ -12,7 +12,7 @@ const propTypes = {
   no: PropTypes.number.isRequired,
 };
 
-const Textarea = (props) => {
+const Spinner = (props) => {
   const {
     title, question, no,
   } = props;
@@ -20,7 +20,7 @@ const Textarea = (props) => {
   const { answers } = question;
   if (answers) {
     answers.forEach((answer) => {
-      text = text.concat(answer);
+      text = text.concat(answer || 'empty').concat(' ');
     });
   }
   return (
@@ -36,5 +36,5 @@ const Textarea = (props) => {
   );
 };
 
-Textarea.propTypes = propTypes;
-export default Textarea;
+Spinner.propTypes = propTypes;
+export default Spinner;

@@ -11,12 +11,10 @@ const defaultProps = {
 };
 
 const Card = (props) => {
-  const { name } = props;
-  let { value } = props;
-  value = value || '-';
+  const { name, value } = props;
   return (
     <div className="section-card">
-      <div className="number">{value}</div>
+      <div className="number">{value || '-'}</div>
       <div className="desc">{name}</div>
     </div>
   );

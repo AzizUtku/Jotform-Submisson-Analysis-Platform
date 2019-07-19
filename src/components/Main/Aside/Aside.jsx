@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AsideHeader from './AsideHeader/AsideHeader';
 import AsideSection from './AsideSection/AsideSection';
+import Cards from './SectionContent/Cards/Cards';
+import Info from './SectionContent/Info/Info';
 import './Aside.scss';
 
 const propTypes = {
@@ -17,7 +19,12 @@ const Aside = (props) => {
       <aside>
         <span className="close">&times;</span>
         <AsideHeader title="Form Details" id={selectedForm.id} url={selectedForm.url} />
-        <AsideSection title="Form Statistics" />
+        <AsideSection title="Form Statistics">
+          <Cards />
+        </AsideSection>
+        <AsideSection title="Form Details" iconClass="fa-caret-square-o-down">
+          <Info />
+        </AsideSection>
       </aside>
     </section>
   );

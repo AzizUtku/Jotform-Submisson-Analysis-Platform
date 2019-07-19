@@ -71,7 +71,6 @@ class Questions extends React.Component {
   render() {
     const { detailsLoaded, questions, noId } = this.state;
     if (detailsLoaded) {
-      console.log('Questions: ', questions);
       const content = [];
       let i = 0;
       for (const questionKey in questions) {
@@ -96,7 +95,7 @@ class Questions extends React.Component {
       return content;
     }
     if (noId) {
-      return <h2>Please select one of your forms...</h2>;
+      return <div className="loader" />;
     }
     return <h2>Loading...</h2>;
   }

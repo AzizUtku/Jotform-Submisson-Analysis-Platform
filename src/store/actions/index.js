@@ -3,4 +3,10 @@ export {
   setApiKey,
 } from './auth';
 
-export { getForms, selectForm } from './data';
+export {
+  getForms,
+  selectForm,
+  setIsContentLoading,
+  setChartBackgroundColor,
+  setChartBackgroundColors,
+} from './data';

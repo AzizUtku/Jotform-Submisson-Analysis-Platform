@@ -14,10 +14,6 @@ const Cards = (props) => {
     <div className="card-content">
       <Card name="Total Submissions" value={selectedForm.count} />
       <Card name="New Submissions" value={selectedForm.new} />
-      <Card name="Last Update" value={selectedForm.updated_at} />
-      <Card name="Creation" value={selectedForm.created_at} />
-      <Card name="Last Submission" value={selectedForm.last_submission} />
-      <Card name="Status" value={selectedForm.status} />
     </div>
   );
 };

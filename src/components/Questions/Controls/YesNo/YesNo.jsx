@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
@@ -39,12 +41,13 @@ class Yesno extends React.Component {
     labels = question.options.split('|');
     if (answers) {
       answers.forEach((element) => {
-        if (element in amountOfAnswers) {
-          amountOfAnswers[element] += 1;
+        const el = element || 'empty';
+        if (el in amountOfAnswers) {
+          amountOfAnswers[el] += 1;
         } else {
-          amountOfAnswers[element] = 1;
-          if (!labels.includes(element)) {
-            labels.push(element);
+          amountOfAnswers[el] = 1;
+          if (!labels.includes(el)) {
+            labels.push(el);
           }
         }
         totalAnswers += 1;

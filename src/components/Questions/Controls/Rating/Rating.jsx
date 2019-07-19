@@ -1,10 +1,11 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
+import QuestionCard from '../../Question/QuestionCard/QuestionCard';
 import Charts from '../../../Charts/Charts';
 import { chartTypes } from '../../../../constants/constants';
-import QuestionCard from '../../Question/QuestionCard/QuestionCard';
 
 const propTypes = {
   question: PropTypes.object.isRequired,
@@ -12,11 +13,11 @@ const propTypes = {
   no: PropTypes.number.isRequired,
 };
 
-class Checkbox extends React.Component {
+class Rating extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chartType: chartTypes.PIE,
+      chartType: chartTypes.BAR,
     };
   }
 
@@ -30,38 +31,25 @@ class Checkbox extends React.Component {
       title, no, question,
     } = this.props;
 
-    let labels = [];
+    const labels = [];
     const amountOfAnswers = {};
     let totalAnswers = 0;
 
-    const { answers } = question;
-
-    labels = question.options.split('|');
+    const { answers, scaleFrom, stars } = question;
+    for (let i = Number(scaleFrom); i < Number(stars); i += 1) {
+      labels.push(i.toString());
+    }
     if (answers) {
-      answers.forEach((answer) => {
-        const properAnswer = answer || 'empty';
-        if (!Array.isArray(properAnswer)) {
-          if (properAnswer in amountOfAnswers) {
-            amountOfAnswers[properAnswer] += 1;
-          } else {
-            amountOfAnswers[properAnswer] = 1;
-            if (!labels.includes(properAnswer)) {
-              labels.push(properAnswer);
-            }
+      answers.forEach((element) => {
+        const rating = element || 'empty';
+        if (rating in amountOfAnswers) {
+          amountOfAnswers[rating] += 1;
+        } else {
+          amountOfAnswers[rating] = 1;
+          if (!labels.includes(rating)) {
+            labels.push(rating);
           }
-          return;
         }
-        properAnswer.forEach((element) => {
-          const el = element || 'empty';
-          if (el in amountOfAnswers) {
-            amountOfAnswers[el] += 1;
-          } else {
-            amountOfAnswers[el] = 1;
-            if (!labels.includes(el)) {
-              labels.push(el);
-            }
-          }
-        });
         totalAnswers += 1;
       });
     }
@@ -85,5 +73,5 @@ class Checkbox extends React.Component {
   }
 }
 
-Checkbox.propTypes = propTypes;
-export default Checkbox;
+Rating.propTypes = propTypes;
+export default Rating;
